@@ -16,7 +16,7 @@ weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParam
     
     $scope.city = cityService.city;    
     
-    $scope.days = $routeParams.days || 5;
+    $scope.days = $routeParams.days || '5';
     
     $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?APPID=5e3f1215e6dc1f45f3eb32bb6087fbbb", { callback: "JSON_CALLBACK" }, { get: { method: "JSONP"}});
     
@@ -58,4 +58,19 @@ weatherApp.service('cityService', function(){
    
     this.city = "Oakland, Ca";
     
+});
+
+// DIRECTIVES
+weatherApp.directive('weatherDisplay', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'directives/weatherDisplay.html',
+        replace: true,
+        scope: {
+            weatherObject: "=",
+            convertToStandard: "&",
+            convertToDate: "&",
+            dateFormat: "@"
+        }
+    }
 });
