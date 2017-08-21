@@ -3,6 +3,15 @@
         <h3 class="panel-title">{{ convertToDate({ date: weatherObject.dt }) | date: dateFormat }}</h3>
     </div>
     <div class="panel-body">
-        Daytime temperature: {{ convertToStandard({ temperature: weatherObject.temp.day}) }}
+        <ul class="list-group">
+            <li class="list-group-item">Morning: {{ convertToStandard({ temperature: weatherObject.temp.morn}) }}</li>
+            <li class="list-group-item">Day: {{ convertToStandard({ temperature: weatherObject.temp.day}) }}</li>
+            <li class="list-group-item">Evening: {{ convertToStandard({ temperature: weatherObject.temp.eve}) }}</li>
+            <li class="list-group-item">Night: {{ convertToStandard({ temperature: weatherObject.temp.night}) }}</li>
+        </ul>
     </div>                
 </div>
+
+
+        
+        
